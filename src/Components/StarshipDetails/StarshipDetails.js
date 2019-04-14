@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Item-list.css';
+import './StarshipDetails.css';
 
-class Item-list extends Component {
+class StarshipDetails extends Component {
   // constructor(props){
     // super(props);
     // this.state = {};
@@ -23,4 +23,4 @@ class Item-list extends Component {
   }
 }
 
-export default Item-list;
+export default StarshipDetails;
