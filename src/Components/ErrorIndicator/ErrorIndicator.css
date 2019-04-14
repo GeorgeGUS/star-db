@@ -1,0 +1,24 @@
+/*
+ * ErrorIndicator css File
+*/
+
+.error-indicator {
+  margin: 0 auto;
+  text-align: center;
+  color: goldenrod;
+}
+
+.error-icon {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 1rem;
+}
+
+.error-title {
+  font-size: 2rem;
+}
+
+.error-message {
+  font-size: 1.2rem;
+  margin: 0.3rem 0;
+}
