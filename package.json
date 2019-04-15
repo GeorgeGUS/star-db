@@ -1,7 +1,7 @@
 {
   "name": "star-db",
   "version": "0.1.0",
-  "homepage": "https://georgegus.github.io/star-db/",
+  "homepage": "https://georgegus.github.io/Star-DB/",
   "private": true,
   "dependencies": {
     "gh-pages": "2.0.1",
