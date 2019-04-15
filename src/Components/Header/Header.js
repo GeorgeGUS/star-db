@@ -7,20 +7,20 @@ class Header extends Component {
     return (
       <header className="header d-flex align-items-center">
         <h1 className="header-title">
-          <a href="#" className="header-link">
+          <a href="#home" className="header-link">
             StarDB
           </a>
         </h1>
 
         <ul className="nav">
           <li className="nav-item">
-            <a className="nav-link" href="#">People</a>
+            <a className="nav-link" href="#people">People</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Planets</a>
+            <a className="nav-link" href="#planets">Planets</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Starships</a>
+            <a className="nav-link" href="#starships">Starships</a>
           </li>
         </ul>
       </header>

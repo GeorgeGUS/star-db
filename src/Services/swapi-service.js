@@ -12,7 +12,7 @@ export default class SwapiService {
 
   async getAllPeople() {
     const res = await this.getResource(`/people/`);
-    return res.results.map(this._transformPerson);
+    return res.results.map((person, id) => this._transformPerson(person, id + 1));
   }
 
   async getPerson(id) {
@@ -22,7 +22,7 @@ export default class SwapiService {
 
   async getAllPlanets() {
     const res = await this.getResource(`/planets/`);
-    return res.results.map(this._transformPlanet);
+    return res.results.map((planet, id) => this._transformPlanet(planet, id + 1));
   }
 
   async getPlanet(id) {
@@ -32,7 +32,7 @@ export default class SwapiService {
 
   async getAllStarships() {
     const res = await this.getResource(`/starships/`);
-    return res.results.map(this._transformStarship);
+    return res.results.map((ss, id) => this._transformStarship(ss, id + 1));
   }
 
   async getStarship(id) {
@@ -45,7 +45,7 @@ export default class SwapiService {
   //   return item.url.match(idRegExp)[1];
   // }
 
-  _transformPlanet(planet, id) {
+  _transformPlanet = (planet, id) => {
     return {
       id,
       name: planet.name,
@@ -55,27 +55,27 @@ export default class SwapiService {
     }
   }
 
-  _transformStarship(starship, id) {
+  _transformStarship = (starship, id) => {
     return {
       id,
       name: starship.name,
       model: starship.model,
       manufacturer: starship.manufacturer,
-      costInCredits: starship.costInCredits,
+      costInCredits: starship.cost_in_credits,
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
-      cargoCapacity: starship.cargoCapacity
+      cargoCapacity: starship.cargo_capacity
     }
   }
 
-  _transformPerson(person, id) {
+  _transformPerson = (person, id) => {
     return {
       id,
       name: person.name,
       gender: person.gender,
-      birthYear: person.birthYear,
-      eyeColor: person.eyeColor
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color
     }
   }
 }
