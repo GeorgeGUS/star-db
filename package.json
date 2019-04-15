@@ -1,6 +1,7 @@
 {
   "name": "star-db",
   "version": "0.1.0",
+  "homepage": "https://georgegus.github.io/star-db/",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
