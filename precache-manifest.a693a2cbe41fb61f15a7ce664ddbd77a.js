@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "17ec30bd58af3a4c46bd",
+    "revision": "ba7a0222e2772b31c6ad",
     "url": "/star-db/static/css/main.f450d795.chunk.css"
   },
   {
-    "revision": "17ec30bd58af3a4c46bd",
-    "url": "/star-db/static/js/main.5ff883c1.chunk.js"
+    "revision": "ba7a0222e2772b31c6ad",
+    "url": "/star-db/static/js/main.e84db301.chunk.js"
   },
   {
     "revision": "7fd0c1ce602d36977d9a",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/star-db/static/media/death-star-explosion.e7f99c73.jpg"
   },
   {
-    "revision": "412bdfe18be9c88c47776240eb06bd50",
+    "revision": "28f9dc945d1ec387aa969c0f83fd743f",
     "url": "/star-db/index.html"
   }
 ];
