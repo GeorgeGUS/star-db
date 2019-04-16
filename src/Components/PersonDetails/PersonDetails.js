@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
+import Spinner from '../Spinner/Spinner';
 import SwapiService from '../../Services/SwapiService';
 
 import './PersonDetails.css';
-import Spinner from '../Spinner/Spinner';
-import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 
 class PersonDetails extends Component {
   swapiService = new SwapiService();
