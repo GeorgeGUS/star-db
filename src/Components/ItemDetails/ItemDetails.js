@@ -4,9 +4,9 @@ import ErrorIndicator from '../ErrorIndicator';
 import Spinner from '../Spinner';
 import SwapiService from '../../Services/SwapiService';
 
-import './PersonDetails.css';
+import './ItemDetails.css';
 
-class PersonDetails extends Component {
+class ItemDetails extends Component {
   swapiService = new SwapiService();
 
   state = {
@@ -36,10 +36,12 @@ class PersonDetails extends Component {
   updatePerson() {
     const { personId } = this.props;
     if (!personId) return;
+
     this.setState({
       loading: true,
       error: false
     });
+
     this.swapiService
       .getPerson(personId)
       .then(person => {
@@ -53,20 +55,25 @@ class PersonDetails extends Component {
 
   render() {
     const { person, loading, error } = this.state;
+
     if (!(person || error)) {
       return (
         <div className='details card'>
-          <span>Select a person from a list</span>
+          {' '}
+          <span>Select a person from a list</span>{' '}
         </div>
       );
     }
+
     const isError = error ? <ErrorIndicator /> : null;
     const isLoading = loading ? <Spinner /> : null;
     const hasData = !(error || loading);
+
     const personData = hasData ? <PersonView {...person} /> : null;
 
     return (
       <div className='details card'>
+        {' '}
         {isError}
         {isLoading}
         {personData}
@@ -78,35 +85,38 @@ class PersonDetails extends Component {
 const PersonView = ({ id, name, gender, birthYear, eyeColor }) => {
   return (
     <>
+      {' '}
       <img
         className='details-image'
         alt={name}
         width='400'
         height='550'
-        src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-      />
-
+        src={`https: //starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+      />{' '}
       <div className='card-body'>
-        <h3 className='subtitle'>{name}</h3>
+        {' '}
+        <h3 className='subtitle'> {name}</h3>{' '}
         <table className='table'>
+          {' '}
           <tbody>
+            {' '}
             <tr>
-              <td>Gender</td>
-              <td>{gender}</td>
-            </tr>
+              {' '}
+              <td>Gender</td> <td> {gender}</td>{' '}
+            </tr>{' '}
             <tr>
-              <td>Birth Year</td>
-              <td>{birthYear}</td>
-            </tr>
+              {' '}
+              <td>Birth Year</td> <td> {birthYear}</td>{' '}
+            </tr>{' '}
             <tr>
-              <td>Eye Color</td>
-              <td>{eyeColor}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              {' '}
+              <td>Eye Color</td> <td> {eyeColor}</td>{' '}
+            </tr>{' '}
+          </tbody>{' '}
+        </table>{' '}
+      </div>{' '}
     </>
   );
 };
 
-export default PersonDetails;
+export default ItemDetails;

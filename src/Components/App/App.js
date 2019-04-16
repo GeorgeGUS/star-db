@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 import ErrorIndicator from '../ErrorIndicator';
 import Header from '../Header';
-import ItemList from '../ItemList';
 import PeoplePage from '../PeoplePage';
-import PersonDetails from '../PersonDetails';
 import RandomPlanet from '../RandomPlanet';
 import SwapiService from '../../Services/SwapiService';
 

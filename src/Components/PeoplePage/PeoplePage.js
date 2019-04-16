@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ErrorBoundary from '../ErrorBoundary';
 import ItemList from '../ItemList';
-import PersonDetails from '../PersonDetails';
+import ItemDetails from '../ItemDetails';
 import Row from '../Row';
 import SwapiService from '../../Services/SwapiService';
 
@@ -30,12 +30,12 @@ class PeoplePage extends Component {
         {i => `${i.name} (${i.birthYear})`}
       </ItemList>
     );
-    const personDetails = (
+    const itemDetails = (
       <ErrorBoundary>
-        <PersonDetails personId={this.state.selectedPerson} />
+        <ItemDetails personId={this.state.selectedPerson} />
       </ErrorBoundary>
     );
-    return <Row left={itemList} right={personDetails} />;
+    return <Row left={itemList} right={itemDetails} />;
   }
 }
 
