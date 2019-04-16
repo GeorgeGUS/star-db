@@ -5,6 +5,16 @@ import Spinner from '../Spinner';
 
 import './ItemDetails.css';
 
+const Record = ({ item, field, label }) => {
+  return (
+    <tr>
+      <td>{label}</td>
+      <td>{item[field]}</td>
+    </tr>
+  );
+};
+
+export { Record };
 class ItemDetails extends Component {
   state = {
     item: null,
@@ -43,7 +53,8 @@ class ItemDetails extends Component {
 
   render() {
     const { item, image, loading } = this.state;
-    const viewProps = { item, image };
+    const { children } = this.props;
+
     if (!item) {
       return (
         <div className='details card'>
@@ -52,7 +63,29 @@ class ItemDetails extends Component {
       );
     }
 
-    const itemData = loading ? <Spinner /> : <ItemView {...viewProps} />;
+    const itemView = (
+      <>
+        <img
+          className='details-image'
+          alt={item.name}
+          width='400'
+          height='550'
+          src={image}
+        />
+        <div className='card-body'>
+          <h3 className='subtitle'>{item.name}</h3>
+          <table className='table'>
+            <tbody>
+              {React.Children.map(children, child => {
+                return React.cloneElement(child, { item });
+              })}
+            </tbody>
+          </table>
+        </div>
+      </>
+    );
+
+    const itemData = loading ? <Spinner /> : itemView;
 
     return (
       <div className='details card'>
@@ -61,38 +94,5 @@ class ItemDetails extends Component {
     );
   }
 }
-
-const ItemView = ({ item: { name, gender, birthYear, eyeColor }, image }) => {
-  return (
-    <>
-      <img
-        className='details-image'
-        alt={name}
-        width='400'
-        height='550'
-        src={image}
-      />
-      <div className='card-body'>
-        <h3 className='subtitle'>{name}</h3>
-        <table className='table'>
-          <tbody>
-            <tr>
-              <td>Gender</td>
-              <td>{gender}</td>
-            </tr>
-            <tr>
-              <td>Birth Year</td>
-              <td>{birthYear}</td>
-            </tr>
-            <tr>
-              <td>Eye Color</td>
-              <td>{eyeColor}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </>
-  );
-};
 
 export default ItemDetails;

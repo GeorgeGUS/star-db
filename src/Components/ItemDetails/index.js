@@ -1,1 +1,1 @@
-export { default } from './ItemDetails.js';
+export { default, Record } from './ItemDetails.js';
