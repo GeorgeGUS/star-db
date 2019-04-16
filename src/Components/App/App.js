@@ -1,36 +1,21 @@
 import React, { Component } from 'react';
 
-import ErrorIndicator from '../ErrorIndicator';
+import ErrorBoundary from '../ErrorBoundary';
 import Header from '../Header';
 import PeoplePage from '../PeoplePage';
 import RandomPlanet from '../RandomPlanet';
-import SwapiService from '../../Services/SwapiService';
 
 import './App.css';
 
 class App extends Component {
-  swapiService = new SwapiService();
-
-  state = {
-    hasError: false
-  };
-
-  componentDidCatch() {
-    console.log('componentDidCatch()');
-    this.setState({
-      hasError: true
-    });
-  }
-
   render() {
-    if (this.state.hasError) {
-      return <ErrorIndicator />;
-    }
     return (
       <div className='container'>
-        <Header />
-        <RandomPlanet />
-        <PeoplePage />
+        <ErrorBoundary>
+          <Header />
+          <RandomPlanet />
+          <PeoplePage />
+        </ErrorBoundary>
       </div>
     );
   }
