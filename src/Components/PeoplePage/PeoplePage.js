@@ -32,7 +32,7 @@ class PeoplePage extends Component {
     );
     const itemDetails = (
       <ErrorBoundary>
-        <ItemDetails personId={this.state.selectedPerson} />
+        <ItemDetails itemId={this.state.selectedPerson} />
       </ErrorBoundary>
     );
     return <Row left={itemList} right={itemDetails} />;

@@ -1,52 +1,40 @@
 import React, { Component } from 'react';
 
-import ErrorIndicator from '../ErrorIndicator';
+import ErrorBoundary from '../ErrorBoundary';
 import Spinner from '../Spinner';
-import SwapiService from '../../Services/SwapiService';
 
 import './ItemDetails.css';
 
 class ItemDetails extends Component {
-  swapiService = new SwapiService();
-
   state = {
-    person: null,
-    loading: false,
-    error: false
+    item: null,
+    image: null,
+    loading: false
   };
 
   componentDidMount() {
-    this.updatePerson();
+    this.updateItem();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.personId !== this.props.personId) {
-      this.updatePerson();
+    if (prevProps.itemId !== this.props.itemId) {
+      this.updateItem();
     }
   }
 
-  onError = err => {
-    this.setState({
-      error: true,
-      loading: false
-    });
-    console.error(err);
-  };
-
-  updatePerson() {
-    const { personId } = this.props;
-    if (!personId) return;
+  updateItem() {
+    const { itemId, getData, getImageUrl } = this.props;
+    if (!itemId) return;
 
     this.setState({
-      loading: true,
-      error: false
+      loading: true
     });
 
-    this.swapiService
-      .getPerson(personId)
-      .then(person => {
+    getData(itemId)
+      .then(item => {
         this.setState({
-          person,
+          item,
+          image: getImageUrl(item),
           loading: false
         });
       })
@@ -54,67 +42,55 @@ class ItemDetails extends Component {
   }
 
   render() {
-    const { person, loading, error } = this.state;
-
-    if (!(person || error)) {
+    const { item, image, loading } = this.state;
+    const viewProps = { item, image };
+    if (!item) {
       return (
         <div className='details card'>
-          {' '}
-          <span>Select a person from a list</span>{' '}
+          <span>Select an item from a list</span>
         </div>
       );
     }
 
-    const isError = error ? <ErrorIndicator /> : null;
-    const isLoading = loading ? <Spinner /> : null;
-    const hasData = !(error || loading);
-
-    const personData = hasData ? <PersonView {...person} /> : null;
+    const itemData = loading ? <Spinner /> : <ItemView {...viewProps} />;
 
     return (
       <div className='details card'>
-        {' '}
-        {isError}
-        {isLoading}
-        {personData}
+        <ErrorBoundary>{itemData}</ErrorBoundary>
       </div>
     );
   }
 }
 
-const PersonView = ({ id, name, gender, birthYear, eyeColor }) => {
+const ItemView = ({ item: { name, gender, birthYear, eyeColor }, image }) => {
   return (
     <>
-      {' '}
       <img
         className='details-image'
         alt={name}
         width='400'
         height='550'
-        src={`https: //starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-      />{' '}
+        src={image}
+      />
       <div className='card-body'>
-        {' '}
-        <h3 className='subtitle'> {name}</h3>{' '}
+        <h3 className='subtitle'>{name}</h3>
         <table className='table'>
-          {' '}
           <tbody>
-            {' '}
             <tr>
-              {' '}
-              <td>Gender</td> <td> {gender}</td>{' '}
-            </tr>{' '}
+              <td>Gender</td>
+              <td>{gender}</td>
+            </tr>
             <tr>
-              {' '}
-              <td>Birth Year</td> <td> {birthYear}</td>{' '}
-            </tr>{' '}
+              <td>Birth Year</td>
+              <td>{birthYear}</td>
+            </tr>
             <tr>
-              {' '}
-              <td>Eye Color</td> <td> {eyeColor}</td>{' '}
-            </tr>{' '}
-          </tbody>{' '}
-        </table>{' '}
-      </div>{' '}
+              <td>Eye Color</td>
+              <td>{eyeColor}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
