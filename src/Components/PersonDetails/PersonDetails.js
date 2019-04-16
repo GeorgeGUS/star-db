@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ErrorButton from '../ErrorButton/ErrorButton';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import Spinner from '../Spinner/Spinner';
 import SwapiService from '../../Services/SwapiService';
@@ -104,6 +105,7 @@ const PersonView = ({ id, name, gender, birthYear, eyeColor }) => {
             </tr>
           </tbody>
         </table>
+        {/* <ErrorButton /> */}
       </div>
     </>
   );
