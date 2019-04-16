@@ -13,7 +13,7 @@ class RandomPlanet extends Component {
     planet: {},
     loading: true,
     error: false
-  }
+  };
 
   componentDidMount() {
     this.updatePlanet();
@@ -24,17 +24,16 @@ class RandomPlanet extends Component {
     clearInterval(this.interval);
   }
 
-
-  onPlanetLoaded = (planet) => {
+  onPlanetLoaded = planet => {
     this.setState({ planet, loading: false });
-  }
+  };
 
-  onError = (err) => {
+  onError = err => {
     this.setState({
       error: true,
       loading: false
     });
-  }
+  };
 
   updatePlanet = () => {
     const id = Math.floor(Math.random() * 18) + 2;
@@ -42,7 +41,7 @@ class RandomPlanet extends Component {
       .getPlanet(id)
       .then(this.onPlanetLoaded)
       .catch(this.onError);
-  }
+  };
 
   render() {
     const { planet, loading, error } = this.state;
@@ -51,7 +50,7 @@ class RandomPlanet extends Component {
     const errorMsg = error ? <ErrorIndicator /> : null;
     const content = hasData ? <PlanetView {...planet} /> : null;
     return (
-      <div className="random-planet jumbotron rounded d-flex">
+      <div className='random-planet jumbotron rounded d-flex'>
         {spinner}
         {errorMsg}
         {content}
@@ -62,17 +61,19 @@ class RandomPlanet extends Component {
 
 const PlanetView = ({ id, name, population, rotationPeriod, diameter }) => {
   return (
-    <div className="row">
-      <div className="col-md-3">
-        <img className="image"
+    <div className='row'>
+      <div className='col-md-3'>
+        <img
+          className='image'
           alt={name}
-          width="400"
-          height="400"
-          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
+          width='400'
+          height='400'
+          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+        />
       </div>
-      <div className="col mt-md-0 mt-3">
-        <h2 className="subtitle">{name}</h2>
-        <table className="table">
+      <div className='col mt-md-0 mt-3'>
+        <h2 className='subtitle'>{name}</h2>
+        <table className='table'>
           <tbody>
             <tr>
               <td>Population</td>
@@ -90,7 +91,7 @@ const PlanetView = ({ id, name, population, rotationPeriod, diameter }) => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RandomPlanet;

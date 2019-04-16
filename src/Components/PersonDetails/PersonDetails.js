@@ -25,13 +25,13 @@ class PersonDetails extends Component {
     }
   }
 
-  onError = (err) => {
+  onError = err => {
     this.setState({
       error: true,
       loading: false
-    })
+    });
     console.error(err);
-  }
+  };
 
   updatePerson() {
     const { personId } = this.props;
@@ -42,22 +42,23 @@ class PersonDetails extends Component {
     });
     this.swapiService
       .getPerson(personId)
-      .then((person) => {
+      .then(person => {
         this.setState({
           person,
           loading: false
         });
-      }).catch(this.onError);
+      })
+      .catch(this.onError);
   }
 
   render() {
     const { person, loading, error } = this.state;
     if (!(person || error)) {
       return (
-        <div className="details card">
+        <div className='details card'>
           <span>Select a person from a list</span>
         </div>
-      )
+      );
     }
     const isError = error ? <ErrorIndicator /> : null;
     const isLoading = loading ? <Spinner /> : null;
@@ -65,7 +66,7 @@ class PersonDetails extends Component {
     const personData = hasData ? <PersonView {...person} /> : null;
 
     return (
-      <div className="details card">
+      <div className='details card'>
         {isError}
         {isLoading}
         {personData}
@@ -77,15 +78,17 @@ class PersonDetails extends Component {
 const PersonView = ({ id, name, gender, birthYear, eyeColor }) => {
   return (
     <>
-      <img className="details-image"
+      <img
+        className='details-image'
         alt={name}
-        width="400"
-        height="550"
-        src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+        width='400'
+        height='550'
+        src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+      />
 
-      <div className="card-body">
-        <h3 className="subtitle">{name}</h3>
-        <table className="table">
+      <div className='card-body'>
+        <h3 className='subtitle'>{name}</h3>
+        <table className='table'>
           <tbody>
             <tr>
               <td>Gender</td>
@@ -103,7 +106,7 @@ const PersonView = ({ id, name, gender, birthYear, eyeColor }) => {
         </table>
       </div>
     </>
-  )
+  );
 };
 
 export default PersonDetails;

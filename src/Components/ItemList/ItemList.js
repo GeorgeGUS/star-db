@@ -12,11 +12,9 @@ class ItemList extends Component {
   };
 
   componentDidMount() {
-    this.swapiService
-      .getAllPeople()
-      .then((peopleList) => {
-        this.setState({ peopleList });
-      });
+    this.swapiService.getAllPeople().then(peopleList => {
+      this.setState({ peopleList });
+    });
   }
 
   render() {
@@ -24,16 +22,17 @@ class ItemList extends Component {
     const { onItemSelected } = this.props;
 
     return (
-      <ul className="item-list list-group">
+      <ul className='item-list list-group'>
         {peopleList.map(({ id, name }) => {
           return (
             <li
               key={id}
-              className="list-group-item list-group-item-action"
-              onClick={() => onItemSelected(id)}>
+              className='list-group-item list-group-item-action'
+              onClick={() => onItemSelected(id)}
+            >
               {name}
             </li>
-          )
+          );
         })}
       </ul>
     );

@@ -9,13 +9,13 @@
 }
 
 .header-title {
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   margin-right: 2rem;
   font-size: 2rem;
 }
 
 .header .nav-link {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 3px;
 }
 
