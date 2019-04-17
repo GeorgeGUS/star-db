@@ -46,8 +46,8 @@ class App extends Component {
         <ErrorBoundary>
           <Header />
           {/* <RandomPlanet /> */}
-          {/* <PeoplePage /> */}
           <Row left={personDetails} right={starshipDetails} />
+          <PeoplePage />
         </ErrorBoundary>
       </div>
     );
