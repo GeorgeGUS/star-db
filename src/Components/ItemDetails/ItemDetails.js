@@ -65,13 +65,7 @@ class ItemDetails extends Component {
 
     const itemView = (
       <>
-        <img
-          className='details-image'
-          alt={item.name}
-          width='400'
-          height='550'
-          src={image}
-        />
+        <img className='details-image' alt={item.name} src={image} />
         <div className='card-body'>
           <h3 className='subtitle'>{item.name}</h3>
           <table className='table'>

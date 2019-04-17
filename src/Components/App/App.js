@@ -31,7 +31,7 @@ class App extends Component {
 
     const starshipDetails = (
       <ItemDetails
-        itemId={5}
+        itemId={9}
         getData={getStarship}
         getImageUrl={getStarshipImage}
       >
