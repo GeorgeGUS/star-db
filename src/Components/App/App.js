@@ -5,8 +5,9 @@ import Header from '../Header';
 import Row from '../Row';
 import PeoplePage from '../PeoplePage';
 import RandomPlanet from '../RandomPlanet';
-import ItemDetails, { Record } from '../ItemDetails';
 import SwapiService from '../../Services/SwapiService';
+import { SwapiServiceProvider } from '../SwapiServiceContext';
+
 import {
   PersonList,
   PlanetList,
@@ -25,18 +26,20 @@ class App extends Component {
     return (
       <div className='container'>
         <ErrorBoundary>
-          <Header />
-          {/* <RandomPlanet /> */}
-          {/* <PeoplePage /> */}
-          <Row
-            left={<PersonDetails itemId={11} />}
-            right={<StarshipDetails itemId={9} />}
-          />
-          <PlanetDetails itemId={5} />
+          <SwapiServiceProvider value={this.swapiService}>
+            <Header />
+            {/* <RandomPlanet /> */}
+            {/* <PeoplePage /> */}
+            <Row
+              left={<PersonDetails itemId={11} />}
+              right={<StarshipDetails itemId={9} />}
+            />
+            <PlanetDetails itemId={5} />
 
-          <PersonList />
-          <PlanetList />
-          <StarshipList />
+            <PersonList />
+            <PlanetList />
+            <StarshipList />
+          </SwapiServiceProvider>
         </ErrorBoundary>
       </div>
     );
