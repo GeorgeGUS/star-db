@@ -20,4 +20,8 @@ const ItemList = ({ data, onItemSelected, children: getLabel }) => {
   return <ul className='item-list list-group'>{items}</ul>;
 };
 
+ItemList.defaultProps = {
+  onItemSelected: () => {}
+};
+
 export default ItemList;
