@@ -10,6 +10,7 @@ import { PeoplePage, PlanetsPage, StarshipsPage } from '../../Pages';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
+import { StarshipDetails } from '../sw-components';
 
 class App extends Component {
   state = {
@@ -41,7 +42,14 @@ class App extends Component {
               <Route path='/planets' render={() => <h2>Planets</h2>} />
               <Route path='/planets' component={PlanetsPage} />
               <Route path='/starships' render={() => <h2>Starships</h2>} />
-              <Route path='/starships' component={StarshipsPage} />
+              <Route path='/starships' exact component={StarshipsPage} />
+              <Route
+                path='/starships/:id'
+                render={({ match }) => {
+                  const { id } = match.params;
+                  return <StarshipDetails itemId={id} />;
+                }}
+              />
             </Router>
           </SwapiServiceProvider>
         </ErrorBoundary>

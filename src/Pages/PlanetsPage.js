@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { PlanetList, PlanetDetails } from '../Components/sw-components';
 import Row from '../Components/Row';
 
-class PeoplePage extends Component {
+class PlanetsPage extends Component {
   state = {
     selectedItem: null
   };
@@ -22,4 +22,4 @@ class PeoplePage extends Component {
   }
 }
 
-export default PeoplePage;
+export default PlanetsPage;
