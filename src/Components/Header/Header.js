@@ -14,17 +14,17 @@ const Header = ({ onServiceChange }) => {
 
       <ul className='header-nav nav'>
         <li className='nav-item'>
-          <Link to='/people' className='nav-link'>
+          <Link to='/people/' className='nav-link'>
             People
           </Link>
         </li>
         <li className='nav-item'>
-          <Link to='/planets' className='nav-link'>
+          <Link to='/planets/' className='nav-link'>
             Planets
           </Link>
         </li>
         <li className='nav-item'>
-          <Link to='/starships' className='nav-link'>
+          <Link to='/starships/' className='nav-link'>
             Starships
           </Link>
         </li>
