@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { StarshipList, StarshipDetails } from '../Components/sw-components';
-import Row from '../Components/Row/Row';
+import Row from '../Components/Row';
 
 class PeoplePage extends Component {
   state = {
