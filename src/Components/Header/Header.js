@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Header.css';
 
@@ -6,26 +7,26 @@ const Header = ({ onServiceChange }) => {
   return (
     <header className='header d-flex align-items-center'>
       <h1 className='header-title'>
-        <a href='/' className='header-link'>
+        <Link to='/' className='header-link'>
           StarDB
-        </a>
+        </Link>
       </h1>
 
       <ul className='header-nav nav'>
         <li className='nav-item'>
-          <a className='nav-link' href='/people'>
+          <Link to='/people' className='nav-link'>
             People
-          </a>
+          </Link>
         </li>
         <li className='nav-item'>
-          <a className='nav-link' href='/planets'>
+          <Link to='/planets' className='nav-link'>
             Planets
-          </a>
+          </Link>
         </li>
         <li className='nav-item'>
-          <a className='nav-link' href='/starships'>
+          <Link to='/starships' className='nav-link'>
             Starships
-          </a>
+          </Link>
         </li>
       </ul>
 
