@@ -14,6 +14,10 @@
   font-size: 2rem;
 }
 
+.header-nav {
+  margin-right: 1rem;
+}
+
 .header .nav-link {
   padding: 0.5rem 1rem;
   border-radius: 3px;
