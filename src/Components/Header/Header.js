@@ -28,6 +28,16 @@ const Header = ({ onServiceChange }) => {
             Starships
           </Link>
         </li>
+        <li className='nav-item'>
+          <Link to='/login' className='nav-link'>
+            Login
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <Link to='/secret' className='nav-link'>
+            Secret
+          </Link>
+        </li>
       </ul>
 
       <button className='btn btn-primary btn-sm' onClick={onServiceChange}>
