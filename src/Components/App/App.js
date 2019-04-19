@@ -24,6 +24,8 @@ class App extends Component {
     isLoggedIn: false
   };
 
+  _basePath = process.env.PUBLIC_URL;
+
   onLogin = () => {
     this.setState({
       isLoggedIn: true
@@ -43,11 +45,12 @@ class App extends Component {
 
   render() {
     const { isLoggedIn } = this.state;
+    console.log(this._basePath);
     return (
       <div className='container'>
         <ErrorBoundary>
           <SwapiServiceProvider value={this.state.swapiService}>
-            <Router basename={process.env.PUBLIC_URL}>
+            <Router basename={this._basePath}>
               <Header onServiceChange={this.onServiceChange} />
               <RandomPlanet />
               <Switch>
@@ -56,11 +59,21 @@ class App extends Component {
                   render={() => <h2>Welcome to StarDB</h2>}
                   exact
                 />
-                <Route path='/people/:id?' component={PeoplePage} />
-                <Route path='/planets' component={PlanetsPage} />
-                <Route path='/starships' exact component={StarshipsPage} />
                 <Route
-                  path='/starships/:id'
+                  path={`${this._basePath}/people/:id?`}
+                  component={PeoplePage}
+                />
+                <Route
+                  path={`${this._basePath}/planets`}
+                  component={PlanetsPage}
+                />
+                <Route
+                  path={`${this._basePath}/starships`}
+                  exact
+                  component={StarshipsPage}
+                />
+                <Route
+                  path={`${this._basePath}/starships/:id`}
                   render={({ match }) => {
                     const { id } = match.params;
                     return <StarshipDetails itemId={id} />;
