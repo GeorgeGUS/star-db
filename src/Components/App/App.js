@@ -13,7 +13,7 @@ import {
   LoginPage,
   SecretPage
 } from '../../Pages';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import { StarshipDetails } from '../sw-components';
@@ -23,8 +23,6 @@ class App extends Component {
     swapiService: new SwapiService(),
     isLoggedIn: false
   };
-
-  _basePath = process.env.PUBLIC_URL;
 
   onLogin = () => {
     this.setState({
@@ -45,12 +43,11 @@ class App extends Component {
 
   render() {
     const { isLoggedIn } = this.state;
-    console.log(this._basePath);
     return (
       <div className='container'>
         <ErrorBoundary>
           <SwapiServiceProvider value={this.state.swapiService}>
-            <Router basename={this._basePath}>
+            <Router>
               <Header onServiceChange={this.onServiceChange} />
               <RandomPlanet />
               <Switch>
@@ -59,21 +56,11 @@ class App extends Component {
                   render={() => <h2>Welcome to StarDB</h2>}
                   exact
                 />
+                <Route path='/people/:id?' component={PeoplePage} />
+                <Route path='/planets' component={PlanetsPage} />
+                <Route path='/starships' exact component={StarshipsPage} />
                 <Route
-                  path={`${this._basePath}/people/:id?`}
-                  component={PeoplePage}
-                />
-                <Route
-                  path={`${this._basePath}/planets`}
-                  component={PlanetsPage}
-                />
-                <Route
-                  path={`${this._basePath}/starships`}
-                  exact
-                  component={StarshipsPage}
-                />
-                <Route
-                  path={`${this._basePath}/starships/:id`}
+                  path='/starships/:id'
                   render={({ match }) => {
                     const { id } = match.params;
                     return <StarshipDetails itemId={id} />;
